@@ -57,7 +57,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" href="/galeri">Dashboard</a></li>
-                                <li><a class="dropdown-item" href="/contact">Contact Us</a></li>
+                                <li><a class="dropdown-item" href="/contact">Contact</a></li>
                               <li><a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">

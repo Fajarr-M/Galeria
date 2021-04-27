@@ -30,11 +30,13 @@ class ContactMe extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.email')->from('help@galeria.test')
-        ->cc('contact@galeria.test')
-           ->subject('Test Mailtrap')
-           ->with([
-             'name' => 'Fajar',
-           ]);
+        $user = Auth::user()->name;
+        return $this->markdown('email.email')
+            ->from('sjuga321@gmail.com')
+            ->cc('sjuga321@gmail.com')
+            ->subject('Galeria Info')
+            ->with([
+             'name' => $user,
+                ]);
     }
 }

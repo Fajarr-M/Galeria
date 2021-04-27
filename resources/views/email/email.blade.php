@@ -1,11 +1,11 @@
 @component('mail::message')
-# Coba Mailtrap
+# Galeria
 
-Hi, **{{$name}}**    
-Thanks For Joining To Galeria    
+Hi, Sir   
+Thanks For Joining To {{ config('app.name') }}  
 
 @component('mail::button', ['url' => 'http://galeria.test'])
-Click Here
+Galeria
 @endcomponent
 
 Thanks,<br>

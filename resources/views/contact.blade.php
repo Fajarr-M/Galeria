@@ -17,6 +17,7 @@
           <span>{{ $message }}</span>
       @enderror
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-success">Kirim</button>
+    <a href="/" class="btn btn-primary">Kembali</a>
   </form>
 @endsection
