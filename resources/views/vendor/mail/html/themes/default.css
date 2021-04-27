@@ -43,7 +43,7 @@ h1 {
     font-size: 18px;
     font-weight: bold;
     margin-top: 0;
-    text-align: center;
+    text-align: left;
 }
 
 h2 {
@@ -81,7 +81,7 @@ img {
     -premailer-cellpadding: 0;
     -premailer-cellspacing: 0;
     -premailer-width: 100%;
-    background-color: #edf2f7;
+    background-color: white;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -124,7 +124,13 @@ img {
     -premailer-cellpadding: 0;
     -premailer-cellspacing: 0;
     -premailer-width: 100%;
-    background-image: linear-gradient(to right, #3a5a8d, #8480a4);
+    /* background-image: linear-gradient(to right, #3a5a8d, #8480a4); */
+    background: rgb(58, 90, 141);
+    background: linear-gradient(
+        90deg,
+        rgba(58, 90, 141, 1) 0%,
+        rgba(132, 128, 164, 1) 50%
+    );
     border-bottom: 1px solid #edf2f7;
     border-top: 1px solid #edf2f7;
     margin: 0;

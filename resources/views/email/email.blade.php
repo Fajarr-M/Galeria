@@ -1,5 +1,5 @@
 @component('mail::message')
-# Galeria
+# Welcome
 
 Hi, Sir <br>
 Thanks For Joining To {{ config('app.name') }}  
