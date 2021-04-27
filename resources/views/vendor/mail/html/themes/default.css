@@ -124,7 +124,7 @@ img {
     -premailer-cellpadding: 0;
     -premailer-cellspacing: 0;
     -premailer-width: 100%;
-    background-color: salmon;
+    background-image: linear-gradient(to right, #3a5a8d, #8480a4);
     border-bottom: 1px solid #edf2f7;
     border-top: 1px solid #edf2f7;
     margin: 0;
