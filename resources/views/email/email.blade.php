@@ -11,7 +11,7 @@ Galeria
 Thanks,<br>
 {{ config('app.name') }}
 <br>
-<div class="section text-center fs-1">© {{ date('Y') }} {{ config('app.name') }}. All Rights Reseved
+<div class="section text-center fs-1">© {{ date('Y') }} {{ config('app.name') }}. All Rights Reserved
 <br>
 <div class="sosmed">
 <a href="instagram.com/fmhabil._"><img src="https://www.transparentpng.com/thumb/logo-instagram/z75gfy-instagram-logo-png.png" alt="instagram logo png @transparentpng.com" style="width: 30px; margin-right:10px;"></a>
