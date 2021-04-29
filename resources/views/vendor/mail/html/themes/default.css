@@ -99,8 +99,8 @@ img {
 /* Header */
 
 .header {
-    padding: 25px 0;
-    text-align: center;
+    padding: 25px 0 0 225px;
+    text-align: left;
 }
 
 .header a {
