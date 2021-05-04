@@ -20,12 +20,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = User::get();
+        $user = User::all();
         if (request()->ajax()){
-            return datatables()->of($data)
-            ->addColumn('aksi', function($data){
-                $button = "<a href='user/edit/$data->id' class='btn btn-success'>Edit</a>";
-                $button .= "<a href='user/delete/$data->id' class='btn btn-danger ms-2'>Hapus</a>";
+            return datatables()->of($user)
+            ->addColumn('aksi', function($user){
+                $button = "<a href='user/edit/$user->id' class='btn btn-success'>Edit</a>";
+                $button .= "<a href='user/delete/$user->id' class='btn btn-danger ms-2'>Hapus</a>";
                   return $button;
             })
             ->rawColumns(['aksi'])

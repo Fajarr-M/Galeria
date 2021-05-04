@@ -41,7 +41,7 @@
             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
-        <a href="/album" class="btn btn-warning">Kembali</a>
+        <a href="/user" class="btn btn-warning">Kembali</a>
       </form>
 </div>
 @endsection

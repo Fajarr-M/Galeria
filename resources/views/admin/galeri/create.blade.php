@@ -36,7 +36,7 @@
             <input class="form-control" type="file" id="foto" name="foto">
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
-        <a href="/album" class="btn btn-warning">Kembali</a>
+        <a href="/galeri" class="btn btn-warning">Kembali</a>
       </form>
 </div>
 @endsection
