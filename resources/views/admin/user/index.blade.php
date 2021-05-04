@@ -12,52 +12,46 @@
     <div class="d-flex justify-content-end mb-2">
     <a href="{{ route('user.create') }}"><button type="button" class="btn btn-primary ">Tambah User</button></a>
     </div>
-    <table class="table">
-        <thead class="table-dark">
-        <tr>
-            <th scope="col">No</th>
-            <th scope="col">Nama User</th>
-            <th scope="col">Email</th>
-            <th scope="col">Level</th>
-            <th scope="col">Aksi</th>
-        </tr>
-        </thead>
-        <tbody>
-            @foreach ($user as $data)
-            <tr>
-                <th scope="row">{{ ++$no }}</th>
-                <td>{{ $data->name }}</td>
-                <td>{{ $data->email }}</td>
-                <td>{{ $data->level }}</td>
-                <td>
-                        <a href="{{ route('user.edit', $data->id) }}" class="btn btn-success">Edit</a>
-                      <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Hapus
-                        </button>
-                        
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Di Hapus?</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                <form action="{{ route('user.destroy', $data->id) }}" method="POST">@csrf
-                                <button class="btn btn-danger">Hapus</button>
-                                </form>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                </td>
-            </tr> 
-            @endforeach
-        </tbody>
-      </table>
-      <div>{{ $user->links() }}</div>
+      <div class="container">
+          <table class="table" id="table1">
+              <thead>
+                  <tr>
+                      <th>No</th>
+                      <th>Nama</th>
+                      <th>Email</th>
+                      <th>Level</th>
+                      <th>Aksi</th>
+                  </tr>
+              </thead>
+          </table>
+      </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready( function () {
+        isi()
+} );
+function isi(){
+    $('#table1').DataTable({
+        serverside : true,
+        responsive : true,
+        ajax : {
+            url : "{{ route('user.index') }}"
+        },
+        columns:[ 
+        {
+            "data" : null, "sortable" : false,
+            render : function (data, type, row, meta){
+                return meta.row + meta.settings._iDisplayStart + 1
+            }
+        },
+        {data: 'name', name: 'name'},
+        {data: 'email', name: 'email'},
+        {data: 'level', name: 'level'},
+        {data: 'aksi', name: 'aksi'}
+        ]
+  })
+}
+</script>
 @endsection

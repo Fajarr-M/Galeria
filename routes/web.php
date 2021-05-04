@@ -47,12 +47,12 @@ Auth::routes([
     
     
     //Route User
-    Route::get('/user', [UserController::class, 'index']);
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
     Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
-    Route::post('/user', [UserController::class, 'store'])->name('user.store');
+    Route::post('/user/simpan', [UserController::class, 'store'])->name('user.store');
     Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-    Route::post('/user/delete{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     
     //Email
     Route::get('/contact', [ContactController::class, 'index']);

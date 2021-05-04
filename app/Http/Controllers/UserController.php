@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Album;
+Use App\DataTables\UserDataTable;
 
 class UserController extends Controller
 {
@@ -19,10 +20,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        $batas = 5;
-        $user = User::orderBy('id','desc')->paginate($batas);
-        $no = $batas * ($user->currentPage() -1);
-        return view('admin.user.index', compact('user','no'));
+        $data = User::get();
+        if (request()->ajax()){
+            return datatables()->of($data)
+            ->addColumn('aksi', function($data){
+                $button = "<a href='user/edit/$data->id' class='btn btn-success'>Edit</a>";
+                $button .= "<a href='user/delete/$data->id' class='btn btn-danger ms-2'>Hapus</a>";
+                  return $button;
+            })
+            ->rawColumns(['aksi'])
+            ->make(true);
+        }
+        return view('admin.user.index');
     }
 
     /**
