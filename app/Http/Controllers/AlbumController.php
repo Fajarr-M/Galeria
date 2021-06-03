@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Album;
+use Illuminate\Support\Facades\Storage;
 use File;
 
 class AlbumController extends Controller
@@ -55,7 +56,7 @@ class AlbumController extends Controller
 
         $gambar = $request->gambar;
         $namafile = time().'.'.$gambar->getClientOriginalExtension();
-        $gambar->move('images/',$namafile);
+        $gambar->move('storage/images/',$namafile);
 
         $album->gambar = $namafile;
         $album->save();
@@ -101,7 +102,7 @@ class AlbumController extends Controller
 
             $gambar = $request->gambar;
             $namafile = time().'.'.$gambar->getClientOriginalExtension();
-            $gambar->move('images/',$namafile);
+            $gambar->move('storage/images/',$namafile);
             $album->gambar = $namafile;
         }
          else{
@@ -123,7 +124,7 @@ class AlbumController extends Controller
     {
         $album = Album::find($id);
         $namafile = $album->gambar;
-        File::delete('images/'.$namafile);
+        File::delete('storage/images/'.$namafile);
         $album->delete();
         return redirect('/album')->with('status','Data Album Berhasil Dihapus');
     }

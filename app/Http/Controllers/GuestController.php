@@ -86,9 +86,13 @@ class GuestController extends Controller
     }
 
     public function galerifoto($title){
-        $albums = Album::where('album_seo', $title)->first();
-        $galeris = $albums->photos()->orderBy('id', 'desc')->simplePaginate(6);
-        return view('gallery', compact('albums','galeris'));
+        $album = Album::where('album_seo', $title)->first();
+        $galeri = $album->photos()->orderBy('id', 'desc')->paginate(4);
+        if (request()->ajax()) {
+            $view = view('data',compact('galeris'))->render();
+            return response()->json(['html'=>$view]);
+        }
+        return view('gallery', compact('album','galeri'));
     }
 
     public function likefoto(Request $request, $id){

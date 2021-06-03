@@ -64,8 +64,8 @@ class GaleriController extends Controller
         $namafile = time().'.'.$foto->getClientOriginalExtension();
 
         Image::make($foto)->resize(150,150)
-        ->save('thumb/'.$namafile);
-        $foto->move('images/',$namafile);
+        ->save('storage/thumb/'.$namafile);
+        $foto->move('storage/images/',$namafile);
 
         $galeri->foto = $namafile;
         $galeri->save();
@@ -115,8 +115,8 @@ class GaleriController extends Controller
             $namafile = time().'.'.$foto->getClientOriginalExtension();
 
             Image::make($foto)->resize(150,150)
-            ->save('thumb/'.$namafile);
-            $foto->move('images/',$namafile);
+            ->save('storage/thumb/'.$namafile);
+            $foto->move('storage/images/',$namafile);
 
             $galeri->foto = $namafile;
         }
@@ -140,7 +140,8 @@ class GaleriController extends Controller
     {
         $galeri = Galeri::find($id);
         $namafile = $galeri->foto;
-        File::delete('thumb/'.$namafile);
+        File::delete('storage/thumb/'.$namafile);
+        File::delete('storage/images/'.$namafile);
         $galeri->delete();
         return redirect('/galeri')->with('status','Data Galeri Foto Berhasil Dihapus');
     }

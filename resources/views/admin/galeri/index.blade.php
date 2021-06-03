@@ -30,30 +30,12 @@
                 <td>{{ $data->nama_galeri }}</td>
                 <td>{{ $data->albums->nama_album }}</td>
                 <td>{{ $data->users->name }}</td>
-                <td><img src="{{ asset('thumb/'.$data->foto) }}" style="width: 150px"></td>
+                <td><img src="{{ asset('storage/thumb/'.$data->foto) }}" style="width: 150px"></td>
                 <td>
-                    <a href="{{ route('galeri.edit', $data->id) }}" class="btn btn-success">Edit</a>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Hapus
-                    </button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Di Hapus?</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <form action="{{ route('galeri.destroy', $data->id) }}" method="POST">@csrf
-                            <button class="btn btn-danger">Hapus</button>
-                            </form>
-                            </div>
-                        </div>
-                        </div>
-                    </div>        
+                    <form action="{{ route('galeri.destroy',$data->id) }}" method="post">@csrf
+                        <a href="{{ route('galeri.edit', $data->id) }}" class="btn btn-success">Edit</a>
+                        <button class="btn btn-danger" onclick="return confirm('Yakin Mau Dihapus?')">Hapus</button>
+                    </form> 
                 </td>
             </tr> 
             @endforeach

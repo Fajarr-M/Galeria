@@ -4,10 +4,10 @@
 <div class="container pt-3">
     <h1>Album Foto</h1>
     @if (session('status'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
         {{ session('status') }}
-    </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     @endif
     <div class="d-flex justify-content-end mb-2">
     <a href="{{ route('album.create') }}"><button type="button" class="btn btn-primary ">Tambah Album</button></a>
@@ -28,30 +28,12 @@
                 <th scope="row">{{ ++$no }}</th>
                 <td>{{ $data->nama_album }}</td>
                 <td>{{ $data->album_seo }}</td>
-                <td><img src="{{ asset('images/'.$data->gambar) }}" style="width: 150px"></td>
+                <td><img src="{{ asset('storage/images/'.$data->gambar) }}" style="width: 150px"></td>
                 <td>
+                    <form action="{{ route('album.destroy',$data->id) }}" method="post">@csrf
                     <a href="{{ route('album.edit', $data->id) }}" class="btn btn-success">Edit</a>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Hapus
-                    </button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Di Hapus?</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <form action="{{ route('album.destroy', $data->id) }}" method="POST">@csrf
-                            <button class="btn btn-danger">Hapus</button>
-                            </form>
-                            </div>
-                        </div>
-                        </div>
-                    </div>  
+                    <button class="btn btn-danger" onclick="return confirm('Yakin Mau Dihapus?')">Hapus</button>
+                </form>
                 </td>
             </tr> 
             @endforeach
