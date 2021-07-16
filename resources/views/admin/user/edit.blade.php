@@ -13,6 +13,7 @@
             <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control" id="email" name="email" value="{{$user->email}}">
         </div>
+        @if (Auth::check() && Auth::user()->level == 'admin')
         <div class="form-check">
             <input class="form-check-input" type="radio" name="level" id="level" value="operator"
             @if ($user->level == 'operator')
@@ -30,6 +31,7 @@
               Admin
             </label>
           </div>
+          @endif
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password">

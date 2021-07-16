@@ -13,7 +13,7 @@
           {{-- <img src="/../Images/p11.webp" class="img-circle elevation-2" alt="User Image"> --}}
         </div>
         <div class="info">
-          <a href="" class="d-block">Hi, {{ Auth::user()->name }}</a>
+          <a href="profile/edit/{{ Auth::user()->id }}" class="d-block">Hi, {{ Auth::user()->name }}</a>
           <div class="logout mt-3">
             <a href="{{ route('logout') }}" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>

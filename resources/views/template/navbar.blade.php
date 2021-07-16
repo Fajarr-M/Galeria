@@ -4,16 +4,16 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      @if (Auth::check() && Auth::user()->level == 'admin')
+       @if (Auth::check() && Auth::user()->level == 'admin')
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/album" class="nav-link">Album</a>
       </li>
       @endif
-      @if (Auth::check())
+    
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/galeri" class="nav-link">Galeri Foto</a>
       </li>
-      @endif
+     
       @if (Auth::check() && Auth::user()->level == 'admin')
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/user" class="nav-link">Manajemen User</a>

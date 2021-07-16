@@ -87,7 +87,7 @@ class GuestController extends Controller
 
     public function galerifoto($title){
         $album = Album::where('album_seo', $title)->first();
-        $galeri = $album->photos()->orderBy('id', 'desc')->paginate(4);
+        $galeri = $album->photos()->orderBy('id', 'desc')->paginate(6);
         if (request()->ajax()) {
             $view = view('data',compact('galeris'))->render();
             return response()->json(['html'=>$view]);

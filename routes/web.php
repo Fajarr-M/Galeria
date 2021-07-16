@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,7 +46,6 @@ Auth::routes([
     Route::post('/galeri/update/{id}', [GaleriController::class, 'update'])->name('galeri.update');
     Route::post('/galeri/delete/{id}', [GaleriController::class, 'destroy'])->name('galeri.destroy');
     
-    
     //Route User
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
     Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
@@ -53,6 +53,9 @@ Auth::routes([
     Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
     Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    
+    //Route Profile
+    Route::get('/profile/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
     
     //Email
     Route::get('/contact', [ContactController::class, 'index']);

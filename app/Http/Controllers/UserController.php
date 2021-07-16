@@ -10,8 +10,8 @@ Use App\DataTables\UserDataTable;
 class UserController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
-        $this->middleware('admin');
+        // $this->middleware('auth');
+        // $this->middleware('admin');
     }
     /**
      * Display a listing of the resource.
@@ -55,8 +55,8 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name'=>'required',
-            'password'=>'required|confirmed|min:8',
-            'email'=>'required|email|unique:users'
+            'password'=>['required','confirmed','min:8'],
+            'email'=>['required','email','unique:users'],
         ]);
 
         $user = New User;
